@@ -16,7 +16,6 @@ public class Corbeille1 {
      */
     public static void main(String[] args) {
         System.out.println("LOL");
-        //Watal t'es une petite salope comme ta mère
     }
 
 }
