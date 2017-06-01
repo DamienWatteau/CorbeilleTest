@@ -18,6 +18,7 @@ public class Corbeille1 {
         System.out.println("LOL");
         //Boris va finir éboueur
         //ergjqhgouerngoe
+        //push
     }
     
 }
