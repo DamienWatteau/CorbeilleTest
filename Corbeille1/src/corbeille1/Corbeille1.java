@@ -16,19 +16,6 @@ public class Corbeille1 {
      */
     public static void main(String[] args) {
         System.out.println("LOL");
-        //Boris va finir éboueur
-        //ergjqhgouerngoe
-        //push
-        //les pâtes au fromage c'est bon
-        //TEST
-        //Ferme ta gueule fdp
-        // test
-        // **********************************************
-        // WatteauFuck
-        // VatalBazooka
-        //mdr
-        // Hello c'est Eld
-        // Wesh
     }
 
 }
