@@ -5,8 +5,9 @@
  */
 package jpu2016.dogfight.model;
 
-/**
- *
+import java.util.ArrayList;
+
+/*
  * @author DamienWatteau
  */
 
@@ -20,6 +21,7 @@ package jpu2016.dogfight.model;
             }
       
         public IArea getArea(){
+            return null;
 
         }
         public void buildArea(Dimension dimension){
@@ -32,9 +34,11 @@ package jpu2016.dogfight.model;
 
         }
         public ArrayList<IMobile> getMobiles(){
+            return null;
 
         }
         public IMobile getMobileByPlayer(int player){
+            return null;
 
         }
         public void setMobilesHavesMoved(){
