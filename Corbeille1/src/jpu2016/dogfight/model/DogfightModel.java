@@ -15,7 +15,7 @@ package jpu2016.dogfight.model;
      */
     public class DogfightModel implements IDogfightModel{
         private Sky _sky;
-        private DogfightModel(){
-            _sky = new Sky();
-        }
+            private DogfightModel(){
+                _sky = new Sky();
+            }
 }
