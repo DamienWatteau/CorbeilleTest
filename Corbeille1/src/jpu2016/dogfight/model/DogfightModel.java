@@ -14,5 +14,8 @@ package jpu2016.dogfight.model;
      * @param args the command line arguments
      */
     public class DogfightModel implements IDogfightModel{
-        
+        private Sky _sky;
+        private DogfightModel(){
+            _sky = new Sky();
+        }
 }
