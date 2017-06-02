@@ -5,10 +5,29 @@
  */
 package jpu2016.dogfight.model;
 
-/**
- *
- * @author coste
- */
-public class Plane {
-    
+import javax.swing.text.Position;
+
+public class Plane extends Mobile {
+	
+	int SPEED = 2;
+	int WIDTH = 100;
+	int HEIGHT = 30 ;
+	int player;
+	
+	public Plane(Direction direction, Position position, Dimension dimension, int speed, String image) {
+		super(direction, position, dimension, speed, image);
+                
+	}
+	
+	public boolean isPlayer(int player){
+		return false;
+		
+	}
+	
+	public boolean hit(){
+		return false;
+		
+	}
+	
+
 }

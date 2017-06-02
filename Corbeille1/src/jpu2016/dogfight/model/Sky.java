@@ -5,10 +5,24 @@
  */
 package jpu2016.dogfight.model;
 
-/**
- *
- * @author DamienWatteau
- */
-public class Sky {
-    
+import java.awt.Image;
+
+public class Sky implements IArea {
+	
+	protected Dimension dimension;
+
+        @Override
+	public Dimension getDimension() {
+		return dimension;
+	}
+	
+	public Sky (Dimension dimension){
+		
+	}
+	
+	public Image getImage(){
+		return null;
+		
+	}
+
 }
