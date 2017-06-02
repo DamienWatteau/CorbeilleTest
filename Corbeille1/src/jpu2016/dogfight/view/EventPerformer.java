@@ -4,7 +4,7 @@ public class EventPerformer {
     public EventPermormer(orderPerformer: IOrderPerformer){
         
     }
-    public void EventPerformer(keyCode: KeyEvent){
+    public void EventPerformer(KeyEvent keyCode){
         
     }
     private UserOrder keyCodeToUserOrder(int keyCode){
