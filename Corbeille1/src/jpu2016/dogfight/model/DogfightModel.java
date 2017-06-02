@@ -9,12 +9,10 @@ package jpu2016.dogfight.model;
  *
  * @author DamienWatteau
  */
-public class DogfightModel {
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public class DogfightModel implements IDogfightModel{
         
-    }
 }
