@@ -1,5 +1,6 @@
 package jpu2016.dogfight.view;
-ic class DogfightView {
+
+public class DogfightView extends IViewSystem{
     public DogfightView(IOrderPerformer orderPerformer,IDogfightModel dogfightModel,Observable observable){
         
     }
