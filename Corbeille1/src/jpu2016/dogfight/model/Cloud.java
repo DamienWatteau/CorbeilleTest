@@ -10,5 +10,5 @@ package jpu2016.dogfight.model;
  * @author DamienWatteau
  */
 public class Cloud {
-    //A SUPPRIMER
+    
 }
