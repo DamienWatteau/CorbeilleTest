@@ -18,5 +18,4 @@ public class Corbeille1 {
         System.out.println("LOL");
         //damien mange des patates
     }
-
 }
