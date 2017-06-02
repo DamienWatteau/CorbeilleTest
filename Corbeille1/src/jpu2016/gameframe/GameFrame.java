@@ -1,16 +1,44 @@
 package jpu2016.gameframe;
 
-public class GameFrame {
-    public GameFrame(String title, IEventPermormer performer, IGraphicsBuilder graphicBuilder, Observable observable){
-        
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.util.Observable;
+
+import javax.swing.JFrame;
+
+import dogfight.view.DogfightView;
+
+public class GameFrame extends JFrame implements KeyListener {
+
+    protected IEventPerformer ieventPerformer;
+
+    public GameFrame(String title, IEventPerformer performer, IGraphicsBuilder graphicsBuilder, Observable observable) {
+
     }
-    public void keyPresse(KeyEvent keyevent){
-        
+
+    public IEventPerformer getIEventPerformer() {
+        return ieventPerformer;
     }
-    public void keyReleased(KeyEvent keyCode){
-        
+
+    public void setIEventPerformer(IEventPerformer ieventPerformer) {
+        this.ieventPerformer = ieventPerformer;
+        ieventPerformer.setGameFrame(this);
     }
-    public void keyTyped(KeyEvent keyEvent){
-        
+
+    public void keyPressed(KeyEvent keyEvent) {
+
+    }
+
+    public void keyReleased(KeyEvent keyEvent) {
+
+    }
+
+    public void keyTyped(KeyEvent keyEvent) {
+
+    }
+
+    public void setDogfightView(DogfightView dogfightView) {
+        // TODO Auto-generated method stub
+
     }
 }

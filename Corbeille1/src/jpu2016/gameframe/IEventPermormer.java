@@ -1,7 +1,10 @@
 package jpu2016.gameframe;
 
-public class IEventPermormer {
-    public void eventPerform(KeyEvent keyCode){
-        
-    }
+import java.awt.event.KeyEvent;
+
+public interface IEventPerformer {
+
+    public void eventPerform(KeyEvent keyCode);
+
+    public void setGameFrame(GameFrame gameFrame);
 }
