@@ -1,14 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package jpu2016.gameframe;
 
-/**
- *
- * @author antoi
- */
 public class GameFrame {
-    
+    public GameFrame(String title, IEventPermormer performer, IGraphicsBuilder graphicBuilder, Observable observable){
+        
+    }
+    public void keyPresse(KeyEvent keyevent){
+        
+    }
+    public void keyReleased(KeyEvent keyCode){
+        
+    }
+    public void keyTyped(KeyEvent keyEvent){
+        
+    }
 }

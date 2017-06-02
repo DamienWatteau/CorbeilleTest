@@ -13,6 +13,31 @@ package jpu2016.dogfight.model;
     /**
      * @param args the command line arguments
      */
-    public class DogfightModel implements IDogfightModel{
-        
+    public class DogfightModel implements IDogfightModel{ // UML : La destrution de la classe entre la destruction de Sky (+Croix)
+        private Sky sky;
+            private DogfightModel(){
+                sky = new Sky();
+            }
+      
+        public IArea getArea(){
+
+        }
+        public void buildArea(Dimension dimension){
+
+        }
+        public void addMobile(IMobile Mobile){
+
+        }
+        public void removeMobile(IMobile Mobile){
+
+        }
+        public ArrayList<IMobile> getMobiles(){
+
+        }
+        public IMobile getMobileByPlayer(int player){
+
+        }
+        public void setMobilesHavesMoved(){
+
+        }
 }
