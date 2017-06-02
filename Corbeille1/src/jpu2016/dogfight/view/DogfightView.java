@@ -10,5 +10,16 @@ package jpu2016.dogfight.view;
  * @author antoi
  */
 public class DogfightView {
-    
+    public DogfightView(orderPerformer: IOrderPerformer, dogfightModel: IDogfightModel, observable: Observable){
+        
+    }
+    private void run(){
+        
+    }
+    public displayMessage(String Message){
+        
+    }
+    public void closeAll(){
+        
+    }
 }
