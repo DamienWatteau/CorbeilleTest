@@ -19,7 +19,6 @@ package jpu2016.dogfight.model;
                 sky = new Sky();
             }
       
-              
         public IArea getArea(){
 
         }
