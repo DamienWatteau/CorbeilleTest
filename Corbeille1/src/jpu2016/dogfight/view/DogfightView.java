@@ -10,7 +10,7 @@ package jpu2016.dogfight.view;
  * @author antoi
  */
 public class DogfightView {
-    public DogfightView(orderPerformer: IOrderPerformer, dogfightModel: IDogfightModel, observable: Observable){
+    public DogfightView(IOrderPerformer orderPerformer,IDogfightModel dogfightModel,Observable observable){
         
     }
     private void run(){
