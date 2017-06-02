@@ -18,8 +18,6 @@ package jpu2016.dogfight.model;
             private DogfightModel(){
                 _sky = new Sky();
             }
-        protected sky sky;
-
     public IArea getArea(){
 
     }
