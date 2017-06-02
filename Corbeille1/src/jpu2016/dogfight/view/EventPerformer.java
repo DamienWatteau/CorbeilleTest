@@ -1,7 +1,7 @@
 package jpu2016.dogfight.view;
 
 public class EventPerformer {
-    public EventPermormer(orderPerformer: IOrderPerformer){
+    public EventPermormer(IOrderPerformer orderPerformer){
         
     }
     public void EventPerformer(KeyEvent keyCode){
