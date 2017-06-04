@@ -6,7 +6,7 @@ import java.util.Observable;
 
 import javax.swing.JFrame;
 
-import dogfight.view.DogfightView;
+import jpu2016.dogfight.view.DogfightView;
 
 public class GameFrame extends JFrame implements KeyListener {
 

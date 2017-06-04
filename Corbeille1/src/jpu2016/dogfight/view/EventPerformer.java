@@ -2,8 +2,8 @@ package jpu2016.dogfight.view;
 
 import java.awt.event.KeyEvent;
 
-import game.frame.GameFrame;
-import game.frame.IEventPerformer;
+import jpu2016.gameframe.GameFrame;
+import jpu2016.gameframe.IEventPerformer;
 import jpu2016.dogfight.controller.IOrderPerformer;
 import jpu2016.dogfight.controller.UserOrder;
 

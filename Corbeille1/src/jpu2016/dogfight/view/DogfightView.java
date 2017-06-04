@@ -3,9 +3,9 @@ package jpu2016.dogfight.view;
 import java.lang.Runnable;
 import java.util.Observable;
 
-import game.frame.GameFrame;
-import game.frame.IEventPerformer;
-import game.frame.IGraphicsBuilder;
+import jpu2016.gameframe.GameFrame;
+import jpu2016.gameframe.IEventPerformer;
+import jpu2016.gameframe.IGraphicsBuilder;
 import jpu2016.dogfight.controller.IOrderPerformer;
 import jpu2016.dogfight.model.IDogfightModel;
 
