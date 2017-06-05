@@ -2,35 +2,54 @@ package jpu2016.dogfight.view;
 
 import java.awt.event.KeyEvent;
 
-import jpu2016.gameframe.GameFrame;
-import jpu2016.gameframe.IEventPerformer;
 import jpu2016.dogfight.controller.IOrderPerformer;
+import jpu2016.dogfight.controller.IUserOrder;
+import jpu2016.dogfight.controller.Order;
 import jpu2016.dogfight.controller.UserOrder;
+import jpu2016.gameframe.IEventPerformer;
 
-public class EventPerformer implements IEventPerformer {
+class EventPerformer implements IEventPerformer {
 
-    public EventPerformer(IOrderPerformer orderPreformer) {
+    private final IOrderPerformer orderPerformer;
 
-    }
-
-    public void eventPerform(KeyEvent keyCode) {
-
-    }
-
-    private UserOrder keyCodeToUserOrder(int keyCode) {
-        return null;
-
+    public EventPerformer(final IOrderPerformer orderPerformer) {
+        this.orderPerformer = orderPerformer;
     }
 
     @Override
-    public void setGameFrame(GameFrame gameFrame) {
-        // TODO Auto-generated method stub
-
+    public void eventPerform(final KeyEvent keyCode) {
+        final IUserOrder userOrder = this.keyCodeToUserOrder(keyCode.getKeyCode());
+        if (userOrder != null) {
+            //TODO transmettre l'ordre au controleur (par son interface dédiée)
+        }
     }
 
-    public void setDogfightView(DogfightView dogfightView) {
-        // TODO Auto-generated method stub
+    private IUserOrder keyCodeToUserOrder(final int keyCode) {
+        IUserOrder userOrder;
+        switch (keyCode) {
+            // ordres pour le joueur 1
+            case KeyEvent.VK_UP:
+                userOrder = new UserOrder(0, Order.UP);
+                break;
+            case KeyEvent.VK_RIGHT:
+                //TODO
+                break;
+            case KeyEvent.VK_DOWN:
+                //TODO
+                break;
+            case KeyEvent.VK_LEFT:
+                //TODO
+                break;
+            case KeyEvent.VK_CONTROL: //touche control du clavier == shoot de l'avion
+                //TODO
+                break;
 
+            // ordres pour le joueur 2
+            //TODO idem
+            default:
+                userOrder = null;
+        }
+        return userOrder;
     }
 
 }
