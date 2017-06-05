@@ -1,24 +1,22 @@
 package jpu2016.dogfight.controller;
 
+public class UserOrder implements IUserOrder {
 
+    private final int player;
+    private final Order order;
 
-public class UserOrder implements IUserOrder{
-	private Order order;
-	
-	private int player;
-	
-	public UserOrder(int player, Order order){
-		
-	}
-	
-	public Order getOrder(){
-		return order;
-	}
-	
+    public UserOrder(final int player, final Order order) {
+        this.player = player;
+        this.order = order;
+    }
 
-	public int getPlayer() {
-		return player;
-	}
+    @Override
+    public int getPlayer() {
+        return this.player;
+    }
 
-
+    @Override
+    public Order getOrder() {
+        return this.order;
+    }
 }
