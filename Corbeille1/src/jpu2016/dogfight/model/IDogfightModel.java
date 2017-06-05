@@ -1,26 +1,56 @@
 package jpu2016.dogfight.model;
 
 import java.util.ArrayList;
-import jpu2016.dogfight.view.GraphicsBuilder;
+import java.util.Observable;
 
+public class DogfightModel extends Observable implements IDogfightModel {
 
+    private Sky sky;
+    private final ArrayList<IMobile> mobiles;
 
-public interface IDogfightModel {
-	
-	public IArea getIArea();
+    public DogfightModel() {
+        this.mobiles = new ArrayList<>();
+    }
 
-	public void buildArea(Dimension dimension);
-	
-	public void addMobile(IMobile Mibile);
-	
-	public void removeMobile(IMobile Mobile);
-	
-	public ArrayList<IMobile> getMobiles();
-	
-	public IMobile getMobileByPlayer(int player);
+    @Override
+    public IArea getArea() {
+        return this.sky;
+    }
 
-	public void setMobilesHavesMoved();
+    @Override
+    public void buildArea(final Dimension dimension) {
+        this.sky = new Sky(dimension);
+    }
 
-	public void setGraphicsBuilder(GraphicsBuilder graphicsBuilder);
+    @Override
+    public void addMobile(final IMobile mobile) {
+        this.mobiles.add(mobile);
+        mobile.setDogfightModel(this);
+    }
 
+    @Override
+    public void removeMobile(final IMobile mobile) {
+        this.mobiles.remove(mobile);
+    }
+
+    @Override
+    public ArrayList<IMobile> getMobiles() {
+        return this.mobiles;
+    }
+
+    @Override
+    public IMobile getMobileByPlayer(final int player) {
+        for (final IMobile mobile : this.mobiles) {
+            if (mobile.isPlayer(player)) {
+                return mobile;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public void setMobilesHavesMoved() {
+        this.setChanged();
+        this.notifyObservers();
+    }
 }

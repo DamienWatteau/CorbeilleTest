@@ -1,127 +1,161 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package jpu2016.dogfight.model;
-import java.awt.Color;
+
 import java.awt.Image;
-import java.awt.Point;
-import javax.swing.text.Position;
+import java.io.File;
+import java.io.IOException;
 
-/**
- *
- * @author DamienWatteau
- */
-public class Mobile implements IMobile {
-	
-	protected Dimension dimension;
-	protected Direction direction;
-	protected Position position ;
-	
-	
-	
-	
-public  Mobile(Direction direction , Position position , Dimension dimension , int speed , String image){
-	
-}
+import javax.imageio.ImageIO;
 
-	public Direction getDirection() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+class Mobile implements IMobile {
 
-	public void setDirection(Direction direction) {
-		// TODO Auto-generated method stub
-		
-	}
+    private Direction direction;
+    private final Position position;
+    private final Dimension dimension;
+    private final int speed;
+    private IDogfightModel dogfightModel;
+    private Image images[];
 
-	public Point getPosition() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    public Mobile(final Direction direction, final Position position, final Dimension dimension, final int speed, final String image) {
+        this.direction = direction;
+        this.position = position;
+        this.dimension = dimension;
+        this.speed = speed;
+        try {
+            this.buildAllimages(image);
+        } catch (final IOException e) {
+            e.printStackTrace();
+        }
+    }
 
-	public Dimension getDimension() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    @Override
+    public Direction getDirection() {
+        return this.direction;
+    }
 
-	public int getWidth() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+    @Override
+    public void setDirection(final Direction direction) {
+        this.direction = direction;
+    }
 
-	public int getHeight() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+    @Override
+    public Position getPosition() {
+        return this.position;
+    }
 
-	public int getSpeed() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+    @Override
+    public Dimension getDimension() {
+        return this.dimension;
+    }
 
-	public Image getImage() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    @Override
+    public void placeInArea(final IArea area) {
+        this.position.setMaxX(area.getDimension().getWidth());
+        this.position.setMaxY(area.getDimension().getHeight());
+    }
 
-	public void move() {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	public void moveRight() {
-		
-	}
-	
-	public void moveUp() {
-		
-	}
-	public void moveDown() {
-	
-}
-	public void moveLeft() {
-	
-}
-	
-	public Color getColor(){
-		return null;
-		
-	}
-	
-	
+    @Override
+    public void move() {
+        switch (this.direction) {
+            case UP:
+                this.moveUp();
+                break;
+            case RIGHT:
+                this.moveRight();
+                break;
+            case DOWN:
+                this.moveDown();
+                break;
+            case LEFT:
+                this.moveLeft();
+                break;
+            default:
+                break;
+        }
+    }
 
-	public void PlaceInArea(IArea area) {
-		// TODO Auto-generated method stub
-		
-	}
+    private void moveUp() {
+        this.position.setY(this.position.getY() - this.speed);
+    }
 
-	public boolean isPlayer(int player) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-	
-	
-	public DogfightModel getDogfightModel() {
-		return null;
-	
-		
-	}
+    private void moveRight() {
+        this.position.setX(this.position.getX() + this.speed);
+    }
 
-	public void setDogfightModel(DogfightModel dogfightModel) {
-		// TODO Auto-generated method stub
-		
-	}
+    private void moveDown() {
+        this.position.setY(this.position.getY() + this.speed);
+    }
 
-	public boolean hit() {
-		// TODO Auto-generated method stub
-		return false;
-	}
+    private void moveLeft() {
+        this.position.setX(this.position.getX() - this.speed);
+    }
 
-	public boolean isWeapon() {
-		// TODO Auto-generated method stub
-		return false;
-	}
+    @Override
+    public boolean isPlayer(final int player) {
+        return false;
+    }
 
+    public IDogfightModel getDogfightModel() {
+        return this.dogfightModel;
+    }
+
+    @Override
+    public void setDogfightModel(final IDogfightModel dogfightModel) {
+        this.dogfightModel = dogfightModel;
+        this.getPosition().setMaxX(this.getDogfightModel().getArea().getDimension().getWidth());
+        this.getPosition().setMaxY(this.getDogfightModel().getArea().getDimension().getHeight());
+    }
+
+    @Override
+    public boolean hit() {
+        return false;
+    }
+
+    @Override
+    public boolean isWeapon() {
+        return false;
+    }
+
+    @Override
+    public int getWidth() {
+        switch (this.direction) {
+            case UP:
+            case DOWN:
+                return this.getDimension().getHeight();
+            case RIGHT:
+            case LEFT:
+            default:
+                return this.getDimension().getWidth();
+        }
+    }
+
+    @Override
+    public int getHeight() {
+        switch (this.direction) {
+            case UP:
+            case DOWN:
+                return this.getDimension().getWidth();
+            case RIGHT:
+            case LEFT:
+            default:
+                return this.getDimension().getHeight();
+        }
+    }
+
+    @Override
+    public int getSpeed() {
+        return this.speed;
+    }
+
+    private void buildAllimages(final String imageName) throws IOException {
+        this.images = new Image[4];
+        this.images[Direction.UP.ordinal()] = ImageIO.read(new File("images/" + imageName + "_UP.png"));
+        this.images[Direction.RIGHT.ordinal()] = ImageIO.read(new File("images/" + imageName + "_RIGHT.png"));
+        this.images[Direction.DOWN.ordinal()] = ImageIO.read(new File("images/" + imageName + "_DOWN.png"));
+        this.images[Direction.LEFT.ordinal()] = ImageIO.read(new File("images/" + imageName + "_LEFT.png"));
+    }
+
+    @Override
+    public Image getImage() {
+        return this.images[this.direction.ordinal()];
+    }
 }

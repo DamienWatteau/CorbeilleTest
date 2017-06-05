@@ -1,28 +1,43 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package jpu2016.dogfight.model;
 
 import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
 
-public class Sky implements IArea {
-	
-	protected Dimension dimension;
+import javax.imageio.ImageIO;
 
-        @Override
-	public Dimension getDimension() {
-		return dimension;
-	}
-	
-	public Sky (Dimension dimension){
-		
-	}
-	
-	public Image getImage(){
-		return null;
-		
-	}
+class Sky implements IArea {
 
+    private static String IMAGE = "sky.png";
+    private final Dimension dimension;
+    private Image image;
+
+    public Sky(final Dimension dimension) {
+        this.dimension = dimension;
+        try {
+            this.image = ImageIO.read(new File("images/" + IMAGE));
+        } catch (final IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public Dimension getDimension() {
+        return this.dimension;
+    }
+
+    @Override
+    public int getWidth() {
+        return this.getDimension().getWidth();
+    }
+
+    @Override
+    public int getHeight() {
+        return this.getDimension().getHeight();
+    }
+
+    @Override
+    public Image getImage() {
+        return this.image;
+    }
 }

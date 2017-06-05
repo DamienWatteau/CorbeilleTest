@@ -1,33 +1,26 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package jpu2016.dogfight.model;
 
-import javax.swing.text.Position;
-
 public class Plane extends Mobile {
-	
-	int SPEED = 2;
-	int WIDTH = 100;
-	int HEIGHT = 30 ;
-	int player;
-	
-	public Plane(Direction direction, Position position, Dimension dimension, int speed, String image) {
-		super(direction, position, dimension, speed, image);
-                
-	}
-	
-	public boolean isPlayer(int player){
-		return false;
-		
-	}
-	
-	public boolean hit(){
-		return false;
-		
-	}
-	
 
+    private static int SPEED = 2;
+    private static int WIDTH = 100;
+    private static int HEIGHT = 30;
+
+    private final int player;
+
+    public Plane(final int player, final Direction direction, final Position position, final String image) {
+        super(direction, position, new Dimension(WIDTH, HEIGHT), SPEED, image);
+        this.player = player;
+    }
+
+    @Override
+    public boolean isPlayer(final int player) {
+        return this.player == player;
+    }
+
+    @Override
+    public boolean hit() {
+        //this.getDogfightModel().removeMobile(this);
+        return true;
+    }
 }
