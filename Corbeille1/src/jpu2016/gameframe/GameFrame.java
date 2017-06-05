@@ -1,44 +1,52 @@
 package jpu2016.gameframe;
 
+import java.awt.HeadlessException;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.Observable;
 
 import javax.swing.JFrame;
 
-import jpu2016.dogfight.view.DogfightView;
-
 public class GameFrame extends JFrame implements KeyListener {
 
-    protected IEventPerformer ieventPerformer;
+    private static final long serialVersionUID = -1112124206501543946L;
+    private final IEventPerformer eventPerformer;
 
-    public GameFrame(String title, IEventPerformer performer, IGraphicsBuilder graphicsBuilder, Observable observable) {
+    public GameFrame(final String title, final IEventPerformer eventPerformer, final IGraphicsBuilder graphicsBuilder, final Observable observable)
+            throws HeadlessException {
+        this.eventPerformer = eventPerformer;
 
+        this.setTitle(title);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setResizable(false);
+        this.addKeyListener(this);
+        this.setVisible(true);
+
+        final GamePanel gamePanel = new GamePanel(graphicsBuilder);
+        this.setContentPane(gamePanel);
+        this.setSize(graphicsBuilder.getGlobalWidth() + this.getInsets().left + this.getInsets().right,
+                graphicsBuilder.getGlobalHeight() + this.getInsets().top + this.getInsets().bottom);
+        this.setLocationRelativeTo(null);
+        observable.addObserver(gamePanel);
+
+        this.setVisible(true);
     }
 
-    public IEventPerformer getIEventPerformer() {
-        return ieventPerformer;
+    @Override
+    public void keyPressed(final KeyEvent keyEvent) {
+        this.eventPerformer.eventPerform(keyEvent);
     }
 
-    public void setIEventPerformer(IEventPerformer ieventPerformer) {
-        this.ieventPerformer = ieventPerformer;
-        ieventPerformer.setGameFrame(this);
-    }
-
-    public void keyPressed(KeyEvent keyEvent) {
-
-    }
-
-    public void keyReleased(KeyEvent keyEvent) {
-
-    }
-
-    public void keyTyped(KeyEvent keyEvent) {
-
-    }
-
-    public void setDogfightView(DogfightView dogfightView) {
+    @Override
+    public void keyReleased(final KeyEvent keyEvent) {
         // TODO Auto-generated method stub
 
     }
+
+    @Override
+    public void keyTyped(final KeyEvent keyEvent) {
+        // TODO Auto-generated method stub
+
+    }
+
 }

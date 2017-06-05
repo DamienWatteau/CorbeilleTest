@@ -7,10 +7,7 @@ public interface IGraphicsBuilder {
 
     public void applyModelToGraphic(Graphics graphics, ImageObserver observer);
 
-    public int getWidth();
+    public int getGlobalWidth();
 
-    public int getHeight();
-
-    public void setGamePanel(GamePanel gamePanel);
-
+    public int getGlobalHeight();
 }
