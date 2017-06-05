@@ -1,47 +1,56 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package jpu2016.dogfight.model;
 
 import java.util.ArrayList;
+import java.util.Observable;
 
-/*
- * @author DamienWatteau
- */
+public class DogfightModel extends Observable implements IDogfightModel {
 
-    /**
-     * @param args the command line arguments
-     */
-    public class DogfightModel implements IDogfightModel{ // UML : La destrution de la classe entre la destruction de Sky (+Croix)
-        private Sky sky;
-            private DogfightModel(){
-                sky = new Sky();
+    private Sky sky;
+    private final ArrayList<IMobile> moiles;
+b
+    public DogfightModel() {
+        this.mobiles = new ArrayList<>();
+    }
+
+    @Override
+    public IArea getArea() {
+        return this.sky;
+    }
+
+    @Override
+    public void buildArea(final Dimension dimension) {
+        this.sky = new Sky(dimension);
+    }
+
+    @Override
+    public void addMobile(final IMobile mobile) {
+        this.mobiles.add(mobile);
+        mobile.setDogfightModel(this);
+    }
+
+    @Override
+    public void removeMobile(final IMobile mobile) {
+        this.mobiles.remove(mobile);
+    }
+
+    @Override
+    public ArrayList<IMobile> getMobiles() {
+        return this.mobiles;
+    }
+
+    @Override
+    public IMobile getMobileByPlayer(final int player) {
+        for (final IMobile mobile : this.mobiles) {
+            if (mobile.isPlayer(player)) {
+                return mobile;
             }
-      
-        public IArea getArea(){
-            return null;
-
         }
-        public void buildArea(Dimension dimension){
+        return null;
+    }
 
-        }
-        public void addMobile(IMobile Mobile){
-
-        }
-        public void removeMobile(IMobile Mobile){
-
-        }
-        public ArrayList<IMobile> getMobiles(){
-            return null;
-
-        }
-        public IMobile getMobileByPlayer(int player){
-            return null;
-
-        }
-        public void setMobilesHavesMoved(){
-
-        }
+    @Override
+    public void setMobilesHavesMoved() {
+        this.setChanged();
+        this.notifyObservers();
+    }
 }
