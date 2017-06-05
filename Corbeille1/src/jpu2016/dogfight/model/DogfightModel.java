@@ -6,8 +6,8 @@ import java.util.Observable;
 public class DogfightModel extends Observable implements IDogfightModel {
 
     private Sky sky;
-    private final ArrayList<IMobile> moiles;
-b
+    private final ArrayList<IMobile> mobiles;
+
     public DogfightModel() {
         this.mobiles = new ArrayList<>();
     }
